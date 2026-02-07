@@ -60,18 +60,56 @@ body {
     opacity: 0.6;
 }
 
-.float-heart:nth-child(1) { left: 5%; animation-delay: 0s; }
-.float-heart:nth-child(2) { left: 20%; animation-delay: -2s; }
-.float-heart:nth-child(3) { left: 35%; animation-delay: -4s; }
-.float-heart:nth-child(4) { left: 55%; animation-delay: -6s; }
-.float-heart:nth-child(5) { left: 75%; animation-delay: -8s; }
-.float-heart:nth-child(6) { left: 90%; animation-delay: -10s; }
+.float-heart:nth-child(1) {
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.float-heart:nth-child(2) {
+    left: 20%;
+    animation-delay: -2s;
+}
+
+.float-heart:nth-child(3) {
+    left: 35%;
+    animation-delay: -4s;
+}
+
+.float-heart:nth-child(4) {
+    left: 55%;
+    animation-delay: -6s;
+}
+
+.float-heart:nth-child(5) {
+    left: 75%;
+    animation-delay: -8s;
+}
+
+.float-heart:nth-child(6) {
+    left: 90%;
+    animation-delay: -10s;
+}
 
 @keyframes floatAround {
-    0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-    10% { opacity: 0.6; }
-    90% { opacity: 0.6; }
-    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+
+    0%,
+    100% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.6;
+    }
+
+    90% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
 }
 
 /* Screens */
@@ -122,8 +160,15 @@ body {
 }
 
 @keyframes titlePulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.02); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
 }
 
 /* Hello Kitty Face */
@@ -223,7 +268,8 @@ body {
     height: 10px;
 }
 
-.bow-left, .bow-right {
+.bow-left,
+.bow-right {
     position: absolute;
     width: 25px;
     height: 18px;
@@ -233,7 +279,8 @@ body {
     box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.bow.small .bow-left, .bow.small .bow-right {
+.bow.small .bow-left,
+.bow.small .bow-right {
     width: 12px;
     height: 9px;
 }
@@ -285,8 +332,16 @@ body {
 }
 
 @keyframes blink {
-    0%, 95%, 100% { transform: scaleY(1); }
-    97% { transform: scaleY(0.1); }
+
+    0%,
+    95%,
+    100% {
+        transform: scaleY(1);
+    }
+
+    97% {
+        transform: scaleY(0.1);
+    }
 }
 
 /* Nose */
@@ -355,13 +410,29 @@ body {
     transform-origin: left center;
 }
 
-.whiskers.left span:nth-child(1) { transform: rotate(-10deg); }
-.whiskers.left span:nth-child(2) { transform: rotate(0deg); }
-.whiskers.left span:nth-child(3) { transform: rotate(10deg); }
+.whiskers.left span:nth-child(1) {
+    transform: rotate(-10deg);
+}
 
-.whiskers.right span:nth-child(1) { transform: rotate(10deg); }
-.whiskers.right span:nth-child(2) { transform: rotate(0deg); }
-.whiskers.right span:nth-child(3) { transform: rotate(-10deg); }
+.whiskers.left span:nth-child(2) {
+    transform: rotate(0deg);
+}
+
+.whiskers.left span:nth-child(3) {
+    transform: rotate(10deg);
+}
+
+.whiskers.right span:nth-child(1) {
+    transform: rotate(10deg);
+}
+
+.whiskers.right span:nth-child(2) {
+    transform: rotate(0deg);
+}
+
+.whiskers.right span:nth-child(3) {
+    transform: rotate(-10deg);
+}
 
 /* Love Message */
 .love-message {
@@ -412,8 +483,17 @@ body {
 }
 
 @keyframes sparkle {
-    0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
-    50% { transform: scale(1.2) rotate(20deg); opacity: 0.8; }
+
+    0%,
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.2) rotate(20deg);
+        opacity: 0.8;
+    }
 }
 
 /* Instructions */
@@ -448,14 +528,18 @@ body {
     z-index: 20;
 }
 
-.score-container, .lives-container, .level-container {
+.score-container,
+.lives-container,
+.level-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 3px;
 }
 
-.score-label, .lives-label, .level-label {
+.score-label,
+.lives-label,
+.level-label {
     font-size: 0.75rem;
     color: var(--pink-dark);
     font-weight: 500;
@@ -463,7 +547,8 @@ body {
     letter-spacing: 1px;
 }
 
-.score-value, .level-value {
+.score-value,
+.level-value {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--pink-hot);
@@ -545,8 +630,15 @@ body {
 }
 
 @keyframes wobble {
-    0%, 100% { transform: rotate(-5deg); }
-    50% { transform: rotate(5deg); }
+
+    0%,
+    100% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
 }
 
 .falling-item.caught {
@@ -554,9 +646,20 @@ body {
 }
 
 @keyframes catchPop {
-    0% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.5); opacity: 0.8; }
-    100% { transform: scale(0); opacity: 0; }
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
 }
 
 /* Score Popup */
@@ -572,8 +675,15 @@ body {
 }
 
 @keyframes popUp {
-    0% { transform: translateY(0) scale(1); opacity: 1; }
-    100% { transform: translateY(-50px) scale(1.5); opacity: 0; }
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-50px) scale(1.5);
+        opacity: 0;
+    }
 }
 
 /* Pause Button */
@@ -614,8 +724,15 @@ body {
 }
 
 @keyframes sadBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 .gameover-content h2 {
@@ -625,7 +742,8 @@ body {
     text-shadow: 2px 2px 4px var(--shadow-pink);
 }
 
-.final-score, .high-score {
+.final-score,
+.high-score {
     background: var(--white);
     padding: 15px 40px;
     border-radius: 20px;
@@ -633,13 +751,15 @@ body {
     box-shadow: 0 5px 15px var(--shadow-dark);
 }
 
-.final-score p, .high-score p {
+.final-score p,
+.high-score p {
     font-size: 0.9rem;
     color: #888;
     margin-bottom: 5px;
 }
 
-.final-score span, .high-score span {
+.final-score span,
+.high-score span {
     font-size: 2rem;
     font-weight: 700;
     color: var(--pink-hot);
@@ -685,8 +805,15 @@ body {
 }
 
 @keyframes pausePulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
 }
 
 /* Sparkle Effect */
@@ -701,8 +828,15 @@ body {
 }
 
 @keyframes sparkleAnim {
-    0% { transform: scale(0); opacity: 1; }
-    100% { transform: scale(3); opacity: 0; }
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
 }
 
 /* Responsive */
@@ -712,23 +846,23 @@ body {
         border-radius: 0;
         max-height: 100vh;
     }
-    
+
     .title-container h1 {
         font-size: 2rem;
     }
-    
+
     .title-container h2 {
         font-size: 1.4rem;
     }
-    
+
     .kitty-face {
         transform: scale(0.8);
     }
-    
+
     .instructions {
         padding: 10px 15px;
     }
-    
+
     .instructions p {
         font-size: 0.8rem;
     }
@@ -756,10 +890,86 @@ body {
 }
 
 @keyframes rainbowGlow {
-    0% { filter: drop-shadow(0 0 10px #ff6b6b); }
-    20% { filter: drop-shadow(0 0 10px #feca57); }
-    40% { filter: drop-shadow(0 0 10px #48dbfb); }
-    60% { filter: drop-shadow(0 0 10px #ff9ff3); }
-    80% { filter: drop-shadow(0 0 10px #54a0ff); }
-    100% { filter: drop-shadow(0 0 10px #ff6b6b); }
+    0% {
+        filter: drop-shadow(0 0 10px #ff6b6b);
+    }
+
+    20% {
+        filter: drop-shadow(0 0 10px #feca57);
+    }
+
+    40% {
+        filter: drop-shadow(0 0 10px #48dbfb);
+    }
+
+    60% {
+        filter: drop-shadow(0 0 10px #ff9ff3);
+    }
+
+    80% {
+        filter: drop-shadow(0 0 10px #54a0ff);
+    }
+
+    100% {
+        filter: drop-shadow(0 0 10px #ff6b6b);
+    }
+}
+
+/* Ultra-rare image items - Your special photos! */
+.ultra-rare {
+    animation: ultraPulse 0.8s ease-in-out infinite, wobble 0.5s ease-in-out infinite;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(135deg, #FFD700, #FF69B4, #FFD700);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 105, 180, 0.5);
+}
+
+@keyframes ultraPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 105, 180, 0.5);
+    }
+
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 60px rgba(255, 105, 180, 0.8);
+    }
+}
+
+.ultra-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    display: block;
+}
+
+/* Special catch effect for ultra items */
+.ultra-rare.caught {
+    animation: ultraCatch 0.5s ease-out forwards;
+}
+
+@keyframes ultraCatch {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    30% {
+        transform: scale(1.8) rotate(15deg);
+        opacity: 1;
+    }
+
+    60% {
+        transform: scale(2.2) rotate(-15deg);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(0) rotate(360deg);
+        opacity: 0;
+    }
 }

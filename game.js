@@ -34,7 +34,7 @@ class HelloKittyGame {
         this.baseSpawnRate = 1500; // ms
         this.baseFallSpeed = 2; // pixels per frame
         this.playerSpeed = 8; // percentage per frame
-        
+
         // Touch controls
         this.touchStartX = 0;
         this.isTouching = false;
@@ -56,7 +56,10 @@ class HelloKittyGame {
             { emoji: '⭐', points: 50, type: 'special' },
             { emoji: '🌈', points: 100, type: 'special' },
             { emoji: '☁️', points: -1, type: 'bad' },
-            { emoji: '💔', points: -1, type: 'bad' }
+            { emoji: '💔', points: -1, type: 'bad' },
+            // Ultra-rare image items - Your special photos!
+            { image: 'images/couple.png', points: 200, type: 'ultra', name: 'couple' },
+            { image: 'images/kitty.jpg', points: 150, type: 'ultra', name: 'kitty' }
         ];
 
         this.encouragements = [
@@ -98,7 +101,7 @@ class HelloKittyGame {
 
     handleKeyDown(e) {
         if (!this.isPlaying || this.isPaused) return;
-        
+
         if (e.key === 'ArrowLeft' || e.key === 'a') {
             this.keys.left = true;
         } else if (e.key === 'ArrowRight' || e.key === 'd') {
@@ -126,11 +129,11 @@ class HelloKittyGame {
     handleTouchMove(e) {
         if (!this.isPlaying || this.isPaused || !this.isTouching) return;
         e.preventDefault();
-        
+
         const rect = this.gameArea.getBoundingClientRect();
         const touchX = e.touches[0].clientX - rect.left;
         const percentage = (touchX / rect.width) * 100;
-        
+
         this.playerX = Math.max(10, Math.min(90, percentage));
         this.updatePlayerPosition();
     }
@@ -141,11 +144,11 @@ class HelloKittyGame {
 
     handleMouseMove(e) {
         if (!this.isPlaying || this.isPaused) return;
-        
+
         const rect = this.gameArea.getBoundingClientRect();
         const mouseX = e.clientX - rect.left;
         const percentage = (mouseX / rect.width) * 100;
-        
+
         this.playerX = Math.max(10, Math.min(90, percentage));
         this.updatePlayerPosition();
     }
@@ -192,7 +195,7 @@ class HelloKittyGame {
 
     startSpawning() {
         const spawnRate = Math.max(500, this.baseSpawnRate - (this.level - 1) * 150);
-        
+
         this.spawnInterval = setInterval(() => {
             if (!this.isPaused) {
                 this.spawnItem();
@@ -204,37 +207,57 @@ class HelloKittyGame {
         // Weight the random selection - more good items, fewer special and bad
         const rand = Math.random();
         let item;
-        
-        if (rand < 0.65) {
-            // Good items (65% chance)
+
+        if (rand < 0.60) {
+            // Good items (60% chance)
             const goodItems = this.items.filter(i => i.type === 'good');
             item = goodItems[Math.floor(Math.random() * goodItems.length)];
-        } else if (rand < 0.85) {
+        } else if (rand < 0.80) {
             // Bad items (20% chance)
             const badItems = this.items.filter(i => i.type === 'bad');
             item = badItems[Math.floor(Math.random() * badItems.length)];
-        } else {
+        } else if (rand < 0.95) {
             // Special items (15% chance)
             const specialItems = this.items.filter(i => i.type === 'special');
             item = specialItems[Math.floor(Math.random() * specialItems.length)];
+        } else {
+            // Ultra-rare image items (5% chance) - Your special photos!
+            const ultraItems = this.items.filter(i => i.type === 'ultra');
+            item = ultraItems[Math.floor(Math.random() * ultraItems.length)];
         }
 
         const element = document.createElement('div');
         element.className = 'falling-item';
+
         if (item.type === 'special') {
             element.classList.add('rainbow-glow');
+        } else if (item.type === 'ultra') {
+            element.classList.add('ultra-rare');
+            // Create image element for ultra items
+            const img = document.createElement('img');
+            img.src = item.image;
+            img.alt = item.name;
+            img.className = 'ultra-image';
+            element.appendChild(img);
         }
-        element.textContent = item.emoji;
+
+        if (item.emoji) {
+            element.textContent = item.emoji;
+        }
+
         element.style.left = `${Math.random() * 80 + 10}%`;
         element.style.top = '-50px';
 
         this.gameArea.appendChild(element);
-        
+
+        // Ultra items fall slightly slower so they're easier to catch
+        const speedMultiplier = item.type === 'ultra' ? 0.7 : 1;
+
         this.fallingItems.push({
             element,
             y: -50,
             x: parseFloat(element.style.left),
-            speed: this.baseFallSpeed + (this.level - 1) * 0.3 + Math.random() * 0.5,
+            speed: (this.baseFallSpeed + (this.level - 1) * 0.3 + Math.random() * 0.5) * speedMultiplier,
             points: item.points,
             type: item.type
         });
@@ -277,7 +300,7 @@ class HelloKittyGame {
 
             // Check collision with player
             const itemRect = item.element.getBoundingClientRect();
-            
+
             if (this.checkCollision(itemRect, playerRect)) {
                 this.handleCatch(item, i);
                 continue;
@@ -295,10 +318,10 @@ class HelloKittyGame {
     }
 
     checkCollision(rect1, rect2) {
-        return !(rect1.right < rect2.left || 
-                 rect1.left > rect2.right || 
-                 rect1.bottom < rect2.top || 
-                 rect1.top > rect2.bottom);
+        return !(rect1.right < rect2.left ||
+            rect1.left > rect2.right ||
+            rect1.bottom < rect2.top ||
+            rect1.top > rect2.bottom);
     }
 
     handleCatch(item, index) {
@@ -322,7 +345,7 @@ class HelloKittyGame {
         setTimeout(() => {
             item.element.remove();
         }, 300);
-        
+
         this.fallingItems.splice(index, 1);
     }
 
@@ -336,7 +359,7 @@ class HelloKittyGame {
             popup.style.color = '#ff6b6b';
         }
         this.gameArea.appendChild(popup);
-        
+
         setTimeout(() => popup.remove(), 800);
     }
 
@@ -347,7 +370,7 @@ class HelloKittyGame {
             sparkle.style.left = `${x + Math.random() * 40 - 20}px`;
             sparkle.style.top = `${y + Math.random() * 40 - 20}px`;
             this.gameArea.appendChild(sparkle);
-            
+
             setTimeout(() => sparkle.remove(), 600);
         }
     }
@@ -355,7 +378,7 @@ class HelloKittyGame {
     loseLife() {
         this.lives--;
         this.updateLives();
-        
+
         if (this.lives <= 0) {
             this.gameOver();
         }
@@ -366,7 +389,7 @@ class HelloKittyGame {
         if (newLevel > this.level) {
             this.level = newLevel;
             this.updateLevel();
-            
+
             // Restart spawning with new rate
             clearInterval(this.spawnInterval);
             this.startSpawning();
@@ -396,7 +419,7 @@ class HelloKittyGame {
         if (!this.isPlaying) return;
 
         this.isPaused = !this.isPaused;
-        
+
         if (this.isPaused) {
             this.pauseScreen.classList.remove('hidden');
         } else {
