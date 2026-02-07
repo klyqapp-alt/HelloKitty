@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Kitty's Love Adventure 💕</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Floating decorations -->
+        <div class="floating-hearts">
+            <span class="float-heart">💕</span>
+            <span class="float-heart">🎀</span>
+            <span class="float-heart">💖</span>
+            <span class="float-heart">✨</span>
+            <span class="float-heart">💗</span>
+            <span class="float-heart">🌸</span>
+        </div>
+
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen">
+            <div class="title-container">
+                <h1>Hello Kitty's</h1>
+                <h2>Love Adventure</h2>
+                <div class="kitty-face">
+                    <div class="kitty-ears">
+                        <div class="ear left"></div>
+                        <div class="ear right"></div>
+                    </div>
+                    <div class="kitty-head">
+                        <div class="bow">
+                            <div class="bow-center"></div>
+                            <div class="bow-left"></div>
+                            <div class="bow-right"></div>
+                        </div>
+                        <div class="whiskers left">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="whiskers right">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="eyes">
+                            <div class="eye left"></div>
+                            <div class="eye right"></div>
+                        </div>
+                        <div class="nose"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="love-message">
+                <p>Made with 💕 for my favorite person</p>
+            </div>
+            <button id="start-btn" class="cute-btn">
+                <span>Play Now!</span>
+                <span class="btn-sparkle">✨</span>
+            </button>
+            <div class="instructions">
+                <p>Use ← → arrow keys or touch to move</p>
+                <p>Catch hearts 💕 bows 🎀 and cupcakes 🧁</p>
+                <p>Avoid the rain clouds! ☁️</p>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen hidden">
+            <div class="game-header">
+                <div class="score-container">
+                    <span class="score-label">Score</span>
+                    <span id="score" class="score-value">0</span>
+                </div>
+                <div class="lives-container">
+                    <span class="lives-label">Lives</span>
+                    <div id="lives" class="lives">
+                        <span class="heart">💖</span>
+                        <span class="heart">💖</span>
+                        <span class="heart">💖</span>
+                    </div>
+                </div>
+                <div class="level-container">
+                    <span class="level-label">Level</span>
+                    <span id="level" class="level-value">1</span>
+                </div>
+            </div>
+            
+            <div id="game-area" class="game-area">
+                <div id="player" class="player">
+                    <div class="kitty-body">
+                        <div class="kitty-ears small">
+                            <div class="ear left"></div>
+                            <div class="ear right"></div>
+                        </div>
+                        <div class="kitty-head small">
+                            <div class="bow small">
+                                <div class="bow-center"></div>
+                                <div class="bow-left"></div>
+                                <div class="bow-right"></div>
+                            </div>
+                            <div class="whiskers left small">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <div class="whiskers right small">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <div class="eyes small">
+                                <div class="eye left"></div>
+                                <div class="eye right"></div>
+                            </div>
+                            <div class="nose small"></div>
+                        </div>
+                        <div class="body-oval"></div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="pause-btn" class="pause-btn">⏸️</button>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="gameover-screen" class="screen hidden">
+            <div class="gameover-content">
+                <div class="sad-kitty">😿</div>
+                <h2>Game Over!</h2>
+                <div class="final-score">
+                    <p>Your Score</p>
+                    <span id="final-score">0</span>
+                </div>
+                <div class="high-score">
+                    <p>Best Score</p>
+                    <span id="high-score">0</span>
+                </div>
+                <div class="encouragement">
+                    <p id="encouragement-text">You did amazing! 💕</p>
+                </div>
+                <button id="restart-btn" class="cute-btn">
+                    <span>Try Again!</span>
+                    <span class="btn-sparkle">✨</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Pause Screen -->
+        <div id="pause-screen" class="screen hidden">
+            <div class="pause-content">
+                <h2>Paused</h2>
+                <div class="pause-kitty">😺</div>
+                <button id="resume-btn" class="cute-btn">
+                    <span>Resume</span>
+                    <span class="btn-sparkle">✨</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
