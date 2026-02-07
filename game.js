@@ -59,7 +59,10 @@ class HelloKittyGame {
             { emoji: '💔', points: -1, type: 'bad' },
             // Ultra-rare image items - Your special photos!
             { image: 'images/couple.png', points: 200, type: 'ultra', name: 'couple' },
-            { image: 'images/kitty.jpg', points: 150, type: 'ultra', name: 'kitty' }
+            { image: 'images/kitty.jpg', points: 150, type: 'ultra', name: 'kitty' },
+            { image: 'images/gf_kitty1.png', points: 250, type: 'ultra', name: 'gf_kitty1' },
+            { image: 'images/gf_kitty2.jpg', points: 175, type: 'ultra', name: 'gf_kitty2' },
+            { image: 'images/finger_art.png', points: 225, type: 'ultra', name: 'finger_art' }
         ];
 
         this.encouragements = [
